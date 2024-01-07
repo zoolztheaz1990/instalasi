@@ -15,16 +15,16 @@ tls="$(cat ~/log-install.txt | grep -w "Vmess TLS" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\\E[40;1;37m       Add Xray/Vmess Account      \E[0m"
+echo -e "\E[40;1;37m       Add Xray/Vmess Account      \E[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-		read -rp "User: " -e user
+		read -rp "User : " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 clear
             echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-            echo -e "\\E[40;1;37m       Add Xray/Vmess Account      \E[0m"
+            echo -e "\E[40;1;37m       Add Xray/Vmess Account      \E[0m"
             echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 			echo ""
 			echo "A client with the specified name was already created, please choose another name."
@@ -36,9 +36,9 @@ v2ray-menu
 	done
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "limit ip ( DEVIC ) : " limit
-read -p "limit quota ( GB ) : " quota
-read -p "limit bandwith ( GB ) :  " bw
+read -p "limit Ip ( DEVIC ) : " limit
+read -p "limit Quota ( GB ) : " quota
+read -p "limit Bandwith ( GB ) :  " bw
 read -p "Expired (days)	: " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmess$/a\### '"$user $exp"'\
@@ -57,7 +57,7 @@ acs=`cat<<EOF
       "net": "ws",
       "path": "/vmess",
       "type": "none",
-      "host": "${bug}",
+      "host": "",
       "tls": "tls"
 }
 EOF`
@@ -65,14 +65,14 @@ ask=`cat<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "${bug}",
+      "add": "${domain}",
       "port": "80",
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/vmess",
       "type": "none",
-      "host": "${domain}",
+      "host": "",
       "tls": "none"
 }
 EOF`
@@ -87,7 +87,7 @@ grpc=`cat<<EOF
       "net": "grpc",
       "path": "vmess-grpc",
       "type": "none",
-      "host": "${bug}",
+      "host": "",
       "tls": "tls"
 }
 EOF`

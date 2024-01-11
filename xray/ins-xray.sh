@@ -145,6 +145,26 @@ cat > /etc/xray/config.json << END
            "clients": [
               {
                  "password": "${uuid}"
+#vmessdynamic
+             }
+          ]
+       },
+       "streamSettings":{
+         "network": "ws",
+            "wsSettings": {
+                "path": "/dynamic"
+          }
+        }
+     },
+    {
+      "listen": "127.0.0.1",
+      "port": "25432",
+      "protocol": "trojan",
+      "settings": {
+          "decryption":"none",		
+           "clients": [
+              {
+                 "password": "${uuid}"
 #trojanws
               }
           ],

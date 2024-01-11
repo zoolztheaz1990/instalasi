@@ -285,6 +285,7 @@ echo "   - Dropbear		    : 109, 143" | tee -a log-install.txt
 echo "   - Badvpn		    : 7100-7900" | tee -a log-install.txt
 echo "   - Nginx		    : 81" | tee -a log-install.txt
 echo "   - Vmess TLS		: 443" | tee -a log-install.txt
+echo "   - Vmess dynamic        : 443" | tee -a log-install.txt
 echo "   - Vmess None TLS	: 80,8080" | tee -a log-install.txt
 echo "   - Vless TLS		: 443" | tee -a log-install.txt
 echo "   - Vless None TLS	: 80,8080" | tee -a log-install.txt
